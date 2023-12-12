@@ -1,0 +1,22 @@
+﻿@model VegetableShop.Data.Entitis.BillDetail
+
+<h1>Delete</h1>
+<h3>@ViewBag.error</h3>
+<table class="table">
+	<thead>
+		<tr>
+			<th>@Html.DisplayNameFor(x => x.BillId)</th>
+			<th>@Html.DisplayNameFor(x => x.ProductId)</th>
+			<th>@Html.DisplayNameFor(x => x.Quantity)</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>@Html.DisplayFor(x => x.Quantity)</td>
+			<td>@Html.DisplayFor(x => x.ProductId)</td>
+			<td>@Html.DisplayFor(x => x.Quantity)</td>
+		</tr>
+		}
+	</tbody>
+</table>
+<a asp-action="Index">Back to list</a>

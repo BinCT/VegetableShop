@@ -1,0 +1,41 @@
+﻿@model IEnumerable<VegetableShop.Data.Entitis.Customer>
+@{
+	ViewData["title"] = "Index";
+}
+<h1>Index</h1>
+<a asp-action="Create">Create</a>
+<table class="table">
+	<thead>
+		<tr>
+			<th>@Html.DisplayNameFor(x=>x.Id)</th>
+			<th>@Html.DisplayNameFor(x=>x.Name)</th>
+			<th>@Html.DisplayNameFor(x=>x.Email)</th>
+			<th>@Html.DisplayNameFor(x=>x.Address)</th>
+			<th>@Html.DisplayNameFor(x => x.NumberPhone)</th>
+			<th>@Html.DisplayNameFor(x => x.UserName)</th>
+			<th>@Html.DisplayNameFor(x => x.Password)</th>
+			<th>@Html.DisplayNameFor(x => x.Remember)</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach(var item in Model)
+		{
+			<tr>
+				<td>@Html.DisplayFor(modelItem => item.Id)</td>
+				<td>@Html.DisplayFor(modelItem => item.Name)</td>
+				<td>@Html.DisplayFor(modelItem => item.Email)</td>
+				<td>@Html.DisplayFor(modelItem => item.Address)</td>
+				<td>@Html.DisplayFor(modelItem => item.NumberPhone)</td>
+				<td>@Html.DisplayFor(modelItem => item.UserName)</td>
+				<td>@@@@@@@@@@@@@@@@@@@@@@</td>
+				<td>@Html.DisplayFor(modelItem => item.Remember)</td>
+				<td>
+					<a asp-action="Update" asp-route-id="@item.Id">Update</a>|
+					<a asp-action="Details" asp-route-id="@item.Id">Details</a>|
+					<a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>

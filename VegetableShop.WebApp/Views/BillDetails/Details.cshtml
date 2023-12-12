@@ -1,0 +1,23 @@
+﻿@model VegetableShop.Data.Entitis.BillDetail
+
+<h1>Details</h1>
+<table class="table">
+	<thead>
+		<tr>
+			<th>@Html.DisplayNameFor(x=>x.BillId)</th>
+			<th>@Html.DisplayNameFor(x => x.ProductId)</th>
+			<th>@Html.DisplayNameFor(x => x.Quantity)</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+			<tr>
+			<td>@Html.DisplayFor(x => x.Quantity)</td>
+			<td>@Html.DisplayFor(x => x.Product.Name)</td>
+			<td>@Html.DisplayFor(x => x.Quantity)</td>
+			<td><a asp-action="Update" asp-route-BillId="BillId" asp-route-ProductId="ProductId">Update</a></td>
+			</tr>
+		}
+	</tbody>
+</table>
+<a asp-action="Index">Back to list</a>

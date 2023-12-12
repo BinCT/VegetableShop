@@ -1,0 +1,31 @@
+﻿@model VegetableShop.Data.Entitis.Bill
+
+@{
+	ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+<h3>@ViewBag.error</h3>
+<hr />
+<table class="table">
+	<thead>
+		<tr>
+			<th>@Html.DisplayNameFor(x => x.ID)</th>
+			<th>@Html.DisplayNameFor(x => x.CustomerId)</th>
+			<th>@Html.DisplayNameFor(x => x.CreateDay)</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>@Html.DisplayFor(x => x.ID)</td>
+			<td>@Html.DisplayFor(x => x.CustomerId)</td>
+			<td>@Html.DisplayFor(x => x.CreateDay)</td>
+		</tr>
+	</tbody>
+</table>
+<form asp-action="Delete">
+	<input type="hidden" asp-for="ID" />
+	<input type="submit" value="Delete" class="btn btn-danger" />|
+	<a asp-action="Index">Back to list</a>
+</form>
+\

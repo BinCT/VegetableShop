@@ -17,6 +17,7 @@ namespace VegetableShop.Data.Configurations
 			builder.HasIndex(x=>x.UserName).IsUnique();
 			builder.Property(x=>x.UserName).IsRequired();
 			builder.Property(x=>x.Password).IsRequired();
+			builder.Property(x=>x.NumberPhone).IsRequired().HasMaxLength(11);
 		}
 	}
 }

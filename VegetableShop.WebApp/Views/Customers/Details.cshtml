@@ -1,0 +1,34 @@
+﻿@model VegetableShop.Data.Entitis.Customer
+@{
+	ViewData["title"] = "Details";
+}
+<h1>Details</h1>
+
+<table>
+	<thead>
+		<tr>
+			<th>@Html.DisplayNameFor(x=>x.Id)</th>
+			<th>@Html.DisplayNameFor(x=>x.Name)</th>
+			<th>@Html.DisplayNameFor(x=>x.Email)</th>
+			<th>@Html.DisplayNameFor(x=>x.Address)</th>
+			<th>@Html.DisplayNameFor(x => x.NumberPhone)</th>
+			<th>@Html.DisplayNameFor(x => x.UserName)</th>
+			<th>@Html.DisplayNameFor(x => x.Password)</th>
+			<th>@Html.DisplayNameFor(x => x.Remember)</th>
+		</tr>
+	</thead>
+	<tbody>
+			<tr>
+				<td>@Html.DisplayFor(x => x.Id)</td>
+				<td>@Html.DisplayFor(x => x.Name)</td>
+				<td>@Html.DisplayFor(x => x.Email)</td>
+				<td>@Html.DisplayFor(x => x.Address)</td>
+				<td>@Html.DisplayFor(x => x.NumberPhone)</td>
+				<td>@Html.DisplayFor(x => x.UserName)</td>
+				<td>@Html.DisplayFor(x => x.Password)</td>
+				<td>@Html.DisplayFor(x => x.Remember)</td>
+			</tr>
+	</tbody>
+</table>
+<a asp-action="Update">Update</a>|
+<a asp-action="Index">Back to list</a>|

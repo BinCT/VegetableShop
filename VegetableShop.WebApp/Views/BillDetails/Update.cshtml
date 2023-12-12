@@ -1,0 +1,23 @@
+﻿@model VegetableShop.Data.Entitis.BillDetail
+
+<h1>Update</h1>
+<h3>@ViewBag.error</h3>
+<form method="post" asp-action="Update">
+	<div asp-validation-summary="ModelOnly"></div>
+	<div class="form-group">
+		<label asp-for="BillId" class="control-label"></label>
+		<select asp-for="BillId" class="form-control" asp-items="ViewBag.Bill"></select>
+	</div>
+	<div class="form-group">
+		<label asp-for="ProductId" class="control-label"></label>
+		<select asp-for="ProductId" class="form-control" asp-items="ViewBag.Product"></select>
+	</div>
+	<div class="form-group">
+		<label asp-for="Quantity" class="control-label"></label>
+		<input type="number" min="0" step="1" value="Quantity" asp-for="Quantity" />
+	</div>
+</form>
+
+
+<a asp-action="Index">Back to list</a>
+

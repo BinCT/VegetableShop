@@ -1,0 +1,23 @@
+﻿@model VegetableShop.Data.Entitis.Bill
+
+@{
+	ViewData["Title"] = "Update";
+}
+
+<h1>Update</h1>
+<h3>@ViewBag.error</h3>
+<hr />
+<form method="post" asp-action="Update">
+	<div asp-validation-summary="ModelOnly"></div>
+	<div class="form-group">
+		<label asp-for="CustomerId" class="control-lable"></label>
+		<select asp-for="CustomerId" class="form-group" asp-items="ViewBag.Customer"></select>
+	</div>
+	<div class="form-group">
+		<input type="submit" value="Update" class="btn btn-primary" />
+	</div>
+</form>
+<div>
+	<a asp-action="Index">Back to List</a>
+</div>
+

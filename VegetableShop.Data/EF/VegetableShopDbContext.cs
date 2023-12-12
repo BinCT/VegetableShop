@@ -12,7 +12,6 @@ namespace VegetableShop.Data.EF
 			modelBuilder.ApplyConfiguration(new BillConfiguration());
 			modelBuilder.ApplyConfiguration(new ProductConfiguration());
 			modelBuilder.ApplyConfiguration(new CategoryConfiguration());
-			modelBuilder.ApplyConfiguration(new ProductImageConfiguration());
 			modelBuilder.ApplyConfiguration(new CustomerConfiguration());
 			modelBuilder.ApplyConfiguration(new BillDetailConfiguration());
 
@@ -21,9 +20,8 @@ namespace VegetableShop.Data.EF
 		}
 		public DbSet<Product> Products { get; set; }
 		public DbSet<Category> Categories { get; set; }
-		public DbSet<ProductImage> ProductImages { get; set; }
-		public DbSet<Bill> Bill { get; set; }
-		public DbSet<BillDetail> BillDetail { get; set; }
-		public DbSet<Customer> Customer { get; set; }
+		public DbSet<Bill> Bills { get; set; }
+		public DbSet<BillDetail> BillDetails { get; set; }
+		public DbSet<Customer> Customers { get; set; }
 	}
 }

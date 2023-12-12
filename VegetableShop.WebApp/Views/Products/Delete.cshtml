@@ -1,0 +1,42 @@
+﻿@model VegetableShop.Data.Entitis.Product
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+<h3>@ViewBag.error</h3>
+<div>
+    <h4>Product</h4>
+    <hr />
+    <div>
+        <lable>@Html.DisplayNameFor(model => model.Name)</lable>
+        <p>@Html.DisplayFor(model => model.Name)</p>
+    </div>
+    <div>
+        <lable>@Html.DisplayNameFor(model => model.CategoryId)</lable>
+        <p>@Html.DisplayFor(model => model.CategoryId)</p>
+    </div>
+        <div>
+        <lable>@Html.DisplayNameFor(model => model.Quantity)</lable>
+        <p>@Html.DisplayFor(model => model.Quantity)</p>
+    </div>
+    <div>
+        <lable>@Html.DisplayNameFor(model => model.Price)</lable>
+        <p>@Html.DisplayFor(model => model.Price)</p>
+    </div>
+    <div>
+        <lable>@Html.DisplayNameFor(model => model.Description)</lable>
+        <p>@Html.DisplayFor(model => model.Description)</p>
+    </div>
+    <div>
+        <lable>@Html.DisplayNameFor(model => model.FilePast)</lable>
+        <img src="/user-content/@Html.DisplayFor(model => model.FilePast)" />
+    </div>
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>
+

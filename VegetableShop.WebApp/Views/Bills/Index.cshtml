@@ -1,0 +1,34 @@
+﻿@model IEnumerable<VegetableShop.Data.Entitis.Bill>
+
+@{
+	ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+<hr />
+<h6><a asp-action="Create">Create</a></h6>
+<table class="table">
+	<thead>
+		<tr>
+			<th>@Html.DisplayNameFor(x=>x.ID)</th>
+			<th>@Html.DisplayNameFor(x => x.CustomerId)</th>
+			<th>@Html.DisplayNameFor(x => x.CreateDay)</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach(var item in Model)
+		{
+			<tr>
+				<td>@Html.DisplayFor(modelItem => item.ID)</td>
+				<td>@Html.DisplayFor(modelItem => item.CustomerId)</td>
+				<td>@Html.DisplayFor(modelItem => item.CreateDay)</td>
+				<td>
+					<a asp-action="Update" asp-route-id="@item.ID">Update</a>|
+					<a asp-action="Details" asp-route-id="@item.ID">Details</a>|
+					<a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>

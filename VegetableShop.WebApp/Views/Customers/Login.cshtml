@@ -1,0 +1,28 @@
+﻿@model VegetableShop.Data.Entitis.Customer
+@{
+	ViewData["title"] = "LogIn";
+}
+<h1>Login</h1>
+<h3 style="align-content:center">@ViewBag.error</h3>
+<form asp-action="Login" method="post">
+	<div asp-validation-summary="ModelOnly"></div>
+	<div>
+		<label asp-for="UserName"></label>
+		<input  asp-for="UserName" />
+		<span asp-validation-for="UserName"></span>
+	</div>
+	<div>
+		<label asp-for="Password"></label>
+		<input asp-for="Password" type="password" />
+		<span asp-validation-for="Password"></span>
+	</div>
+	<div>
+		<label asp-for="Remember"></label>
+		<input asp-for="Remember" type="checkbox" />
+		<span asp-validation-for="Remember"></span>
+	</div>
+	<div>
+		<input value="Login" type="submit" />
+	</div>
+</form>
+<a asp-action="ForPassword">Quên mật khẩu?</a>

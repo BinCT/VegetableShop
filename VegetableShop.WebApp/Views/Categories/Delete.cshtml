@@ -1,0 +1,18 @@
+﻿@model VegetableShop.Data.Entitis.Category
+
+@{
+    ViewData["Title"] = "Delete";
+}
+<h1>Delete</h1>
+<h3>@ViewBag.error</h3>
+<hr />
+<div>
+    <lable>@Html.DisplayNameFor(x=>x.Name)</lable>
+    <p>@Html.DisplayFor(x => x.Name)</p>
+</div>
+<form asp-action="Delete">
+    <input type="hidden" asp-for="ID" />
+    <input type="submit" value="Delete" class="btn btn-danger" asp-for="ID" /> |
+    <a asp-action="Index">Back to List</a>
+</form>
+

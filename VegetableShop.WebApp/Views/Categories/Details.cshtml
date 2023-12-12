@@ -1,0 +1,16 @@
+﻿@model VegetableShop.Data.Entitis.Category
+
+@{
+    ViewData["Title"] = "Details";
+}
+<h1>Details</h1>
+<hr />
+<div>
+    <lable>@Html.DisplayNameFor(x=>x.Name)</lable>
+    <p>@Html.DisplayFor(x => x.Name)</p>
+</div>
+<div>
+    <a asp-action="Update" asp-route-id="@Model.ID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+

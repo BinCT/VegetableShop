@@ -1,0 +1,29 @@
+﻿@model IEnumerable<VegetableShop.Data.Entitis.BillDetail>
+
+<h1>Index</h1>
+<a asp-action="Create">Create</a>
+<table class="table">
+	<thead>
+		<tr>
+			<th>@Html.DisplayNameFor(x=>x.BillId)</th>
+			<th>@Html.DisplayNameFor(x => x.ProductId)</th>
+			<th>@Html.DisplayNameFor(x => x.Quantity)</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach(var item in Model)
+		{
+			<tr>
+				<td>@Html.DisplayFor(modelItem => item.BillId)</td>
+				<td>@Html.DisplayFor(modelItem => item.Product.Name)</td>
+				<td>@Html.DisplayFor(modelItem => item.Quantity)</td>
+				<td>
+					<a asp-action="Details" asp-route-BillId="@item.BillId" asp-route-ProductId="@item.ProductId">Details</a>|
+					<a asp-action="Update" asp-route-BillId="@item.BillId" asp-route-ProductId="@item.ProductId">Update</a>|
+					<a asp-action="Delete" asp-route-BillId="@item.BillId" asp-route-ProductId="@item.ProductId">Delete</a>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>

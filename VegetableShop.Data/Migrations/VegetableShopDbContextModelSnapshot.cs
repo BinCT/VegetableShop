@@ -33,7 +33,7 @@ namespace VegetableShop.Data.Migrations
                     b.Property<DateTime>("CreateDay")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 11, 29, 21, 18, 38, 382, DateTimeKind.Local).AddTicks(7095));
+                        .HasDefaultValue(new DateTime(2023, 12, 5, 21, 32, 57, 752, DateTimeKind.Local).AddTicks(5382));
 
                     b.Property<Guid>("CustomerId")
                         .HasColumnType("uniqueidentifier");
@@ -78,6 +78,9 @@ namespace VegetableShop.Data.Migrations
 
                     b.HasKey("ID");
 
+                    b.HasIndex("Name")
+                        .IsUnique();
+
                     b.ToTable("Categories", (string)null);
                 });
 
@@ -102,7 +105,8 @@ namespace VegetableShop.Data.Migrations
 
                     b.Property<string>("NumberPhone")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(11)
+                        .HasColumnType("nvarchar(11)");
 
                     b.Property<string>("Password")
                         .IsRequired()
@@ -138,6 +142,10 @@ namespace VegetableShop.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("FilePast")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -153,39 +161,10 @@ namespace VegetableShop.Data.Migrations
 
                     b.HasIndex("CategoryId");
 
+                    b.HasIndex("Name")
+                        .IsUnique();
+
                     b.ToTable("Products", (string)null);
-                });
-
-            modelBuilder.Entity("VegetableShop.Data.Entitis.ProductImage", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("DatetimeCreate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("FilePast")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FileSize")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("ProductImages", (string)null);
                 });
 
             modelBuilder.Entity("VegetableShop.Data.Entitis.Bill", b =>
@@ -229,17 +208,6 @@ namespace VegetableShop.Data.Migrations
                     b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("VegetableShop.Data.Entitis.ProductImage", b =>
-                {
-                    b.HasOne("VegetableShop.Data.Entitis.Product", "Product")
-                        .WithMany("ProductImages")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Product");
-                });
-
             modelBuilder.Entity("VegetableShop.Data.Entitis.Bill", b =>
                 {
                     b.Navigation("BillDetails");
@@ -258,8 +226,6 @@ namespace VegetableShop.Data.Migrations
             modelBuilder.Entity("VegetableShop.Data.Entitis.Product", b =>
                 {
                     b.Navigation("BillDetails");
-
-                    b.Navigation("ProductImages");
                 });
 #pragma warning restore 612, 618
         }

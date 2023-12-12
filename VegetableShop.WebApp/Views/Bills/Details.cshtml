@@ -1,0 +1,27 @@
+﻿@model VegetableShop.Data.Entitis.Bill
+
+@{
+	ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+<hr />
+<table class="table">
+	<thead>
+		<tr>
+			<th>@Html.DisplayNameFor(x=>x.ID)</th>
+			<th>@Html.DisplayNameFor(x => x.CustomerId)</th>
+			<th>@Html.DisplayNameFor(x => x.CreateDay)</th>
+		</tr>
+	</thead>
+	<tbody>
+			<tr>
+			<td>@Html.DisplayFor(x => x.ID)</td>
+			<td>@Html.DisplayFor(x => x.CustomerId)</td>
+			<td>@Html.DisplayFor(x => x.CreateDay)</td>
+			</tr>
+	</tbody>
+</table>
+<a asp-action="Update" asp-route-Id="ID">Update</a>|
+<a asp-action="Delete" asp-route-Id="ID">Delete</a>|
+<a asp-action="Index">Back to list</a>

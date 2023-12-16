@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 
-namespace VegetableShop.WebApp.Models.Products
+namespace VegetableShop.Data.Catalog.Products
 {
 	public class ProductCreateUpdate
 	{

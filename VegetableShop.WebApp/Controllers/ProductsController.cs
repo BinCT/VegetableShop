@@ -1,14 +1,16 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Humanizer;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using VegetableShop.Data.Catalog.Manager;
+using VegetableShop.Data.Catalog.Products;
 using VegetableShop.Data.EF;
 using VegetableShop.Data.Entitis;
-using VegetableShop.WebApp.Models.Products;
+
 
 namespace VegetableShop.WebApp.Controllers
 {
-    public class ProductsController : Controller
+	public class ProductsController : Controller
 	{
         private readonly VegetableShopDbContext _context;
         private readonly IProductManager _productManager;
@@ -120,7 +122,13 @@ namespace VegetableShop.WebApp.Controllers
 				return View();
 			}
             return RedirectToAction(nameof(Index));
-        }
+		}
+		[HttpGet]
+		public IActionResult Search(SearchProdcut request)
+        {
+			var prodcut = _productManager.Search(request);
+			return View(prodcut);
+		}
             private bool ProductExists(int id)
         {
             return (_context.Products?.Any(e => e.Id == id)).GetValueOrDefault();

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using VegetableShop.Data.Catalog.Manager;
 using VegetableShop.Data.EF;
-using VegetableShop.WebApp.Models.Categories;
+using VegetableShop.Data.Catalog.Categories;
 
 namespace VegetableShop.WebApp.Controllers
 {

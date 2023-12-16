@@ -5,11 +5,11 @@ using VegetableShop.Data.Entitis;
 using VegetableShop.Data.Common;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
-using VegetableShop.WebApp.Models.Products;
+using VegetableShop.Data.Catalog.Products;
 
 namespace VegetableShop.Data.Catalog.Manager
 {
-    public class ProductManager : IProductManager
+	public class ProductManager : IProductManager
     {
         private readonly VegetableShopDbContext _context;
         private readonly IStorageService _storageService;
@@ -89,6 +89,68 @@ namespace VegetableShop.Data.Catalog.Manager
             var fileName = $"{Guid.NewGuid()}{Path.GetExtension(originalFileName)}";
             await _storageService.SaveFileAsync(file.OpenReadStream(), fileName);
             return fileName;
+        }
+
+		public List<ProductGetById> Search(SearchProdcut request)
+		{
+            var product = _context.Products.Include(c=>c.Category).AsQueryable();
+
+            #region Filtering
+            if (!String.IsNullOrEmpty(request.Keyword))
+            {
+                product = product.Where(p => p.Name.Contains(request.Keyword));
+            }
+            if (request.From.HasValue)
+            {
+				product = product.Where(p => p.Price >= request.From);
+			}
+			if (request.To.HasValue)
+			{
+				product = product.Where(p => p.Price <= request.To);
+			}
+            #endregion
+
+            # region sortBy
+            //default sort NameProduct
+            product = product.OrderBy(p => p.Name);
+
+            if (!string.IsNullOrEmpty(request.sortBy))
+            {
+                switch (request.sortBy)
+                {
+                    case "Price_desc": product = product.OrderByDescending(p => p.Price); break;
+                    case "Price_asc": product = product.OrderBy(p => p.Price); break;
+                }
+            }
+            #endregion
+
+            //#region Page
+            //// Page default pageSize = 2
+            //product = product.Skip(request.Page - 1).Take(request.PageSize);
+            //#endregion
+            //var result = product.Select(p => new ProductGetById
+            //{
+            //    Id = p.Id,
+            //    Name = p.Name,
+            //    Price = p.Price,
+            //    Quantity = p.Quantity,
+            //    CategoryId = p.CategoryId,
+            //    Description = p.Description,
+            //    FilePast = p.FilePast
+            //});
+            //return result.ToList();
+            var result = PageList<Product>.Create(product, request.Page, request.PageSize);
+            return result.Select(p => new ProductGetById
+            {
+                Id = p.Id,
+                Name = p.Name,
+                Price = p.Price,
+                Quantity = p.Quantity,
+                CategoryId = p.CategoryId,
+                Description = p.Description,
+                FilePast = p.FilePast
+            }).ToList();
+            
         }
     }
 }

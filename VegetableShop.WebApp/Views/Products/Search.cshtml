@@ -1,0 +1,93 @@
+﻿@model IEnumerable<VegetableShop.Data.Catalog.Products.ProductGetById>
+
+@{
+    ViewData["Title"] = "Search";
+}
+
+<h1>Search</h1>
+<form asp-action="Search" method="get">
+    <div>
+        <label>Keyword</label>
+        <input name="keyword" />
+    </div>
+    <div>
+        <label>From Price</label>
+        <input name="from" type="number" />
+    </div>
+    <div>
+        <label>To Price</label>
+        <input name="to" type="number" />
+    </div>
+    <div>
+        <label>SortBy</label>
+        <input name="sortBy" value="Price_desc" type="radio" /> Giá giảm dần
+        <input name="sortBy" value="Price_asc" type="radio" /> Giá tăng dần
+    </div>
+    <div>
+        <label>PageIndex</label>
+        <input name="Page" type="number" value="1" step="1" />
+    </div>
+    <div>
+        <label>PageSize</label>
+        <input name="PageSize" type="number" value="2" step="1" />
+    </div>
+    <div>
+        <input type="submit" value="Search" />
+    </div>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FilePast)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    <img src="~/user-content/@Html.DisplayFor(modelItem => item.FilePast)" ; width="100px" height="100px"/>
+                </td>
+                <td>
+                    <a asp-action="Update" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Detail" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

@@ -1,4 +1,4 @@
-﻿namespace VegetableShop.WebApp.Models.Products
+﻿namespace VegetableShop.Data.Catalog.Products
 {
 	public class ProductGetById
 	{

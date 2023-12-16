@@ -1,5 +1,5 @@
-﻿using VegetableShop.WebApp.Models.Categories;
-using VegetableShop.WebApp.Models.Products;
+﻿using VegetableShop.Data.Catalog.Categories;
+using VegetableShop.Data.Catalog.Products;
 
 namespace VegetableShop.Data.Catalog.Manager
 {

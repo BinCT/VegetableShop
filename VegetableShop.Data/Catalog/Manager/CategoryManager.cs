@@ -1,6 +1,6 @@
 ﻿using VegetableShop.Data.EF;
 using VegetableShop.Data.Entitis;
-using VegetableShop.WebApp.Models.Categories;
+using VegetableShop.Data.Catalog.Categories;
 
 namespace VegetableShop.Data.Catalog.Manager
 {

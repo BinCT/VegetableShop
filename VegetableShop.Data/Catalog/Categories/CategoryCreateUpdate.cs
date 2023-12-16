@@ -1,4 +1,4 @@
-﻿namespace VegetableShop.WebApp.Models.Categories
+﻿namespace VegetableShop.Data.Catalog.Categories
 {
 	public class CategoryCreateUpdate
 	{

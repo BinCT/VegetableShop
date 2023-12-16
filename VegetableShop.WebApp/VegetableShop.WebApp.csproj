@@ -28,5 +28,11 @@
 	<ItemGroup>
 	  <Folder Include="wwwroot\user-content\" />
 	</ItemGroup>
+	<ItemGroup>
+	  <Content Update="Views\Products\Search.cshtml">
+	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </Content>
+	</ItemGroup>
 
 </Project>

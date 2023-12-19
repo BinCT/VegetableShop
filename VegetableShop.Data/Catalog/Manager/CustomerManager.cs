@@ -1,7 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using VegetableShop.Data.Catalog.Customers;
@@ -14,9 +18,11 @@ namespace VegetableShop.Data.Catalog.Manager
     public class CustomerManager : ICustomerManager
     {
         private readonly VegetableShopDbContext _context;
-        public CustomerManager(VegetableShopDbContext context)
+        private readonly IConfiguration _configuration;
+        public CustomerManager(VegetableShopDbContext context, IConfiguration configuration)
         {
             _context = context;
+            _configuration = configuration;
         }
         public async Task<bool> Login(CustomerLogin request)
         {
@@ -85,6 +91,31 @@ namespace VegetableShop.Data.Catalog.Manager
             customer.Password = HashAndVerify.HashPassword(request.Password);
             _context.Customers.Update(customer);
             return await _context.SaveChangesAsync();
+        }
+
+        public async Task<string> Authencate(CustomerLogin request)
+        {
+            var customer = await _context.Customers.FirstOrDefaultAsync(x => x.UserName == request.UserName);
+            if (customer == null || !HashAndVerify.VerifyHashedPassword(customer.Password, request.Password))
+            {
+                return null;
+            }
+            var claims = new[]
+            {
+                new Claim(ClaimTypes.Name, customer.UserName),
+                new Claim(ClaimTypes.Email, customer.Email),
+                new Claim(ClaimTypes.MobilePhone, customer.NumberPhone),
+            };
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Tokens:Key"]));
+            var haskey = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+            var token = new JwtSecurityToken(
+                _configuration["Tokens:Issuer"],
+                _configuration["Tokens:Issuer"],
+                claims,
+                expires: DateTime.Now.AddMinutes(20),
+                signingCredentials: haskey
+                );
+            return new JwtSecurityTokenHandler().WriteToken(token);
         }
     }
 }

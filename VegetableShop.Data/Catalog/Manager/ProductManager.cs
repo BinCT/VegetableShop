@@ -124,21 +124,6 @@ namespace VegetableShop.Data.Catalog.Manager
             }
             #endregion
 
-            //#region Page
-            //// Page default pageSize = 2
-            //product = product.Skip(request.Page - 1).Take(request.PageSize);
-            //#endregion
-            //var result = product.Select(p => new ProductGetById
-            //{
-            //    Id = p.Id,
-            //    Name = p.Name,
-            //    Price = p.Price,
-            //    Quantity = p.Quantity,
-            //    CategoryId = p.CategoryId,
-            //    Description = p.Description,
-            //    FilePast = p.FilePast
-            //});
-            //return result.ToList();
             var result = PageList<Product>.Create(product, request.Page, request.PageSize);
             return result.Select(p => new ProductGetById
             {

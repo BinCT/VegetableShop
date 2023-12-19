@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VegetableShop.Data", "Veget
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VegetableShop.WebApp", "VegetableShop.WebApp\VegetableShop.WebApp.csproj", "{D5C27990-3F8E-4089-9206-D4AD42AB9576}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VegetableShop.WebClient", "VegetableShop.WebClient\VegetableShop.WebClient.csproj", "{5446DF29-A1F9-40F4-BF9B-2675C2C68D03}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VegetableShop.WebClient", "VegetableShop.WebClient\VegetableShop.WebClient.csproj", "{5446DF29-A1F9-40F4-BF9B-2675C2C68D03}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VegetableShop.API", "VegetableShop.API\VegetableShop.API.csproj", "{CD3A78CD-D0CC-45F7-BE47-443555D237B9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{5446DF29-A1F9-40F4-BF9B-2675C2C68D03}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5446DF29-A1F9-40F4-BF9B-2675C2C68D03}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5446DF29-A1F9-40F4-BF9B-2675C2C68D03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD3A78CD-D0CC-45F7-BE47-443555D237B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD3A78CD-D0CC-45F7-BE47-443555D237B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD3A78CD-D0CC-45F7-BE47-443555D237B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD3A78CD-D0CC-45F7-BE47-443555D237B9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -58,14 +58,14 @@ namespace VegetableShop.Data.Catalog.Manager
 			var result = await _context.BillDetails.FindAsync(billdetail.BillId, billdetail.ProductId);
             if(result == null)
             {
-				_context.BillDetails.Update(billdetail);
-				await _context.SaveChangesAsync();
-				return billdetail.BillId;
+                throw new NotImplementedException();
             }
             else
             {
-				throw new NotImplementedException();
-			}
+                _context.BillDetails.Update(billdetail);
+                await _context.SaveChangesAsync();
+                return billdetail.BillId;
+            }
 			
         }
         public async Task<bool> Delete(int billid, int productid)
